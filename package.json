@@ -1,7 +1,7 @@
 {
   "name": "pm2-stack",
   "version": "0.1.0",
-  "description": "A TypeScript library for Node.js",
+  "description": "A powerful library for managing PM2 processes with ease",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
