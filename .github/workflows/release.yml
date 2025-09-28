@@ -17,6 +17,7 @@ on:
       - 'vitest.config.*'     # Test config
       - '*.test.ts'           # Test files
       - '*.test.js'           # Test files
+      - '.github/workflows/release.yml'           # Release workflow
 
 # Prevent multiple releases from running simultaneously
 concurrency:
