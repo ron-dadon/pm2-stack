@@ -53,6 +53,8 @@ npm install
 - `npm run docs:serve` - Serve documentation locally (Python)
 - `npm run docs:serve:node` - Serve documentation locally (Node.js)
 - `npm run docs:dev` - Build library and serve documentation
+- `npm run docs:sync-version` - Sync version from package.json to docs
+- `npm run docs:build` - Sync version and build library for production
 
 ### Examples
 Check the `examples/` directory for usage examples:
@@ -84,13 +86,22 @@ To view locally:
 ```bash
 # Using npm scripts (recommended)
 npm run docs:serve        # Python server
-npm run docs:serve:node   # Node.js server
+npm run docs:serve:node   # Node.js server  
 npm run docs:dev          # Build + serve
 
 # Or manually
 npx serve docs
 python -m http.server 8000 -d docs
 ```
+
+### Version Synchronization
+
+The documentation automatically stays in sync with the package version:
+
+- **Automatic Sync**: Version is synced before building and publishing
+- **Manual Sync**: Run `npm run docs:sync-version` to update docs with current version
+- **CI Integration**: Version sync runs automatically in GitHub Actions
+- **Script Location**: `scripts/sync-version.js` handles the synchronization
 
 ### CI/CD
 This project uses GitHub Actions for continuous integration. The workflow runs on:
