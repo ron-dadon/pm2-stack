@@ -2,6 +2,8 @@
 
 A powerful TypeScript library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.
 
+> ⚠️ **Development Notice:** This project is currently under active development and is not production ready. Use with caution and expect breaking changes.
+
 [![npm version](https://badge.fury.io/js/pm2-stack.svg)](https://www.npmjs.com/package/pm2-stack)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

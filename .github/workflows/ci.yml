@@ -1,10 +1,36 @@
 name: CI
 
+# Only run CI when actual code changes are made
+# Excludes documentation, README, and other non-code files
 on:
   push:
     branches: [master, main]
+    paths:
+      - 'src/**'              # Source code
+      - 'examples/**'         # Example applications
+      - 'package.json'        # Dependencies
+      - 'package-lock.json'   # Lock file
+      - 'tsconfig.json'       # TypeScript config
+      - 'vite.config.ts'      # Build config
+      - '.eslintrc.js'        # Linting config
+      - '.prettierrc'         # Formatting config
+      - 'vitest.config.*'     # Test config
+      - '*.test.ts'           # Test files
+      - '*.test.js'           # Test files
   pull_request:
     branches: [master, main]
+    paths:
+      - 'src/**'              # Source code
+      - 'examples/**'         # Example applications
+      - 'package.json'        # Dependencies
+      - 'package-lock.json'   # Lock file
+      - 'tsconfig.json'       # TypeScript config
+      - 'vite.config.ts'      # Build config
+      - '.eslintrc.js'        # Linting config
+      - '.prettierrc'         # Formatting config
+      - 'vitest.config.*'     # Test config
+      - '*.test.ts'           # Test files
+      - '*.test.js'           # Test files
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
