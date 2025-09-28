@@ -1,7 +1,7 @@
 {
   "name": "pm2-stack",
   "version": "0.1.0",
-  "description": "A TypeScript library for Node.js",
+  "description": "A powerful library for managing PM2 processes with ease",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -31,7 +31,9 @@
     "docs:dev": "npm run build && npm run docs:serve",
     "docs:sync-version": "node scripts/sync-version.js",
     "docs:build": "npm run docs:sync-version && npm run build:prod",
-    "prepublishOnly": "npm run docs:sync-version && npm run build:prod"
+    "prepublishOnly": "npm run docs:sync-version && npm run build:prod",
+    "semantic-release": "semantic-release",
+    "semantic-release:dry-run": "semantic-release --dry-run"
   },
   "keywords": [
     "typescript",
@@ -44,6 +46,12 @@
     "pm2": "6.0.13"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/node": "24.5.2",
     "@typescript-eslint/eslint-plugin": "8.44.1",
     "@typescript-eslint/parser": "8.44.1",
@@ -52,6 +60,7 @@
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.1",
     "prettier": "3.1.0",
+    "semantic-release": "^22.0.12",
     "typescript": "5.9.2",
     "vite": "7.1.7",
     "vite-plugin-dts": "4.5.4",
@@ -59,5 +68,25 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "release": {
+    "branches": [
+      "master",
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "preset": "conventionalcommits",
+    "tagFormat": "v${version}",
+    "changelogFile": "CHANGELOG.md",
+    "changelogTitle": "# Changelog",
+    "npmPublish": true,
+    "tarballDir": "dist"
   }
 }

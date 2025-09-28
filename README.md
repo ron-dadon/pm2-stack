@@ -1,6 +1,6 @@
 # PM2Stack
 
-A powerful TypeScript library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.
+A powerful library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.
 
 > ⚠️ **Development Notice:** This project is currently under active development and is not production ready. Use with caution and expect breaking changes.
 
@@ -10,6 +10,35 @@ A powerful TypeScript library for managing PM2 processes with ease. Create, star
 ## 📚 Documentation
 
 📖 **[View Full Documentation](https://ron-dadon.github.io/pm2-stack)** - Complete API reference, examples, and guides
+
+## 🚀 Release Process
+
+This project uses [semantic-release](https://semantic-release.gitbook.io/) for automatic version management and package publishing. See [RELEASE.md](./RELEASE.md) for detailed information about the release process.
+
+### Quick Release Guide
+
+1. **Make changes** to source code
+2. **Commit** using [Conventional Commits](https://www.conventionalcommits.org/) format:
+   - `feat:` for new features (minor version bump)
+   - `fix:` for bug fixes (patch version bump)
+   - `BREAKING CHANGE:` for breaking changes (major version bump)
+3. **Push** to `master` or `main` branch
+4. **Automatic release** - GitHub Actions will handle the rest!
+
+### Example Commits
+
+```bash
+# Patch release (0.1.0 → 0.1.1)
+git commit -m "fix: resolve memory leak in PM2Stack"
+
+# Minor release (0.1.0 → 0.2.0)  
+git commit -m "feat: add PM2App class for individual app management"
+
+# Major release (0.1.0 → 1.0.0)
+git commit -m "feat: redesign PM2Stack API
+
+BREAKING CHANGE: The PM2Stack constructor now requires a configuration object"
+```
 
 ## 🚀 Quick Start
 

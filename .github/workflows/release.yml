@@ -1,0 +1,113 @@
+name: Release
+
+# Only run on pushes to master/main branch
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'src/**'              # Source code changes
+      - 'examples/**'         # Example applications
+      - 'package.json'        # Dependencies
+      - 'package-lock.json'   # Lock file
+      - 'tsconfig.json'       # TypeScript config
+      - 'vite.config.ts'      # Build config
+      - '.eslintrc.js'        # Linting config
+      - '.prettierrc'         # Formatting config
+      - 'vitest.config.*'     # Test config
+      - '*.test.ts'           # Test files
+      - '*.test.js'           # Test files
+
+# Prevent multiple releases from running simultaneously
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    # Only run if this is a push to master/main (not a PR)
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Fetch full history for semantic-release to analyze commits
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          # Configure npm registry for publishing
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm run test:run
+      
+      - name: Run linting
+        run: npm run lint
+      
+      - name: Run type checking
+        run: npm run type-check
+      
+      - name: Build library
+        run: npm run build:prod
+      
+      - name: Verify build output
+        run: |
+          echo "Build files:"
+          find dist/ -type f -name "*.js" -o -name "*.d.ts" | sort
+          echo "Build size:"
+          du -sh dist/
+      
+      - name: Verify pm2 is external
+        run: |
+          echo "Checking that pm2 is not bundled..."
+          if ! grep -q "require(\"pm2\")" dist/index.cjs.js; then
+            echo "ERROR: pm2 external require not found in CJS build!"
+            exit 1
+          fi
+          if ! grep -q 'import pm2 from "pm2"' dist/index.esm.js; then
+            echo "ERROR: pm2 external import not found in ESM build!"
+            exit 1
+          fi
+          if grep -q "pm2\.connect\|pm2\.list\|pm2\.start" dist/index.cjs.js && ! grep -q "require(\"pm2\")" dist/index.cjs.js; then
+            echo "ERROR: pm2 appears to be bundled in CJS build!"
+            exit 1
+          fi
+          if grep -q "pm2\.connect\|pm2\.list\|pm2\.start" dist/index.esm.js && ! grep -q 'import pm2 from "pm2"' dist/index.esm.js; then
+            echo "ERROR: pm2 appears to be bundled in ESM build!"
+            exit 1
+          fi
+          echo "✅ pm2 correctly externalized (not bundled)"
+      
+      - name: Release
+        run: npx semantic-release
+        env:
+          # NPM token for publishing (must be set in repository secrets)
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # GitHub token for creating releases and PRs
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Configure semantic-release
+          SEMANTIC_RELEASE_PACKAGE: pm2-stack
+          SEMANTIC_RELEASE_RELEASE_RULES: |
+            [
+              {"type": "feat", "release": "minor"},
+              {"type": "fix", "release": "patch"},
+              {"type": "perf", "release": "patch"},
+              {"type": "revert", "release": "patch"},
+              {"type": "docs", "release": "patch"},
+              {"type": "style", "release": "patch"},
+              {"type": "chore", "release": "patch"},
+              {"type": "refactor", "release": "patch"},
+              {"type": "test", "release": "patch"},
+              {"type": "build", "release": "patch"},
+              {"type": "ci", "release": "patch"},
+              {"type": "BREAKING CHANGE", "release": "major"}
+            ]
