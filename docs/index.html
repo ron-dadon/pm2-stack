@@ -25,8 +25,8 @@
         <li><a href="#features" class="nav-link">Features</a></li>
         <li><a href="#installation" class="nav-link">Installation</a></li>
         <li><a href="#quick-start" class="nav-link">Quick Start</a></li>
-        <li><a href="#api" class="nav-link">API</a></li>
-        <li><a href="#examples" class="nav-link">Examples</a></li>
+        <li><a href="api.html" class="nav-link">API</a></li>
+        <li><a href="examples.html" class="nav-link">Examples</a></li>
       </ul>
     </div>
   </nav>
@@ -198,133 +198,30 @@ stack.registerApp(app);</code></pre>
       </div>
     </section>
 
-    <section id="api" class="api">
+    <section class="api" style="padding: 80px 0;">
       <div class="container">
         <h2 class="section-title">API Reference</h2>
-        <div class="api-section">
-          <h3>PM2Stack</h3>
-          <div class="api-class">
-            <h4>Constructor</h4>
-            <div class="code-block">
-              <pre><code>new PM2Stack(options?: PM2StackOptions)</code></pre>
-            </div>
-            <div class="api-params">
-              <h5>Options</h5>
-              <ul>
-                <li><code>verbose?: boolean</code> - Enable verbose logging (default: false)</li>
-                <li><code>exitOnStart?: boolean</code> - Exit process after starting (default: true)</li>
-              </ul>
-            </div>
-          </div>
-          <div class="api-methods">
-            <h4>Methods</h4>
-            <div class="method">
-              <h5><code>registerApp(app: PM2App): void</code></h5>
-              <p>Register a PM2App with the stack. Must be called before starting the stack.</p>
-            </div>
-            <div class="method">
-              <h5><code>start(): Promise&lt;void&gt;</code></h5>
-              <p>Start all registered applications using PM2.</p>
-            </div>
-            <div class="method">
-              <h5><code>stop(): Promise&lt;void&gt;</code></h5>
-              <p>Stop all registered applications and disconnect from PM2.</p>
-            </div>
-            <div class="method">
-              <h5><code>isStarted(): boolean</code></h5>
-              <p>Check if the stack has been started.</p>
-            </div>
-          </div>
-        </div>
-        <div class="api-section">
-          <h3>PM2App</h3>
-          <div class="api-class">
-            <h4>Constructor</h4>
-            <div class="code-block">
-              <pre><code>new PM2App(config: PM2AppConfig)</code></pre>
-            </div>
-            <div class="api-params">
-              <h5>Configuration</h5>
-              <ul>
-                <li><code>id: string</code> - Unique identifier for the app</li>
-                <li><code>entryPoint: string</code> - Path to the application entry point</li>
-                <li><code>instances?: number</code> - Number of instances (default: 1)</li>
-                <li><code>env?: object</code> - Environment variables</li>
-              </ul>
-            </div>
-          </div>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+          <p style="font-size: 18px; color: #6b7280; margin-bottom: 40px; line-height: 1.6;">
+            Complete API documentation with detailed method descriptions, parameters, and examples.
+          </p>
+          <a href="api.html" class="btn btn-primary"
+            style="display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; background: #2563eb; color: white; transition: all 0.3s ease;">View
+            API Documentation</a>
         </div>
       </div>
     </section>
 
-    <section id="examples" class="examples">
+    <section class="examples" style="padding: 80px 0; background: #f8fafc;">
       <div class="container">
         <h2 class="section-title">Examples</h2>
-        <div class="example-tabs">
-          <button class="tab-btn active" data-tab="basic">Basic Usage</button>
-          <button class="tab-btn" data-tab="cluster">Cluster Mode</button>
-          <button class="tab-btn" data-tab="env">Environment Variables</button>
-        </div>
-        <div class="tab-content">
-          <div id="basic" class="tab-pane active">
-            <div class="code-block">
-              <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
-
-const stack = new PM2Stack({ verbose: true });
-
-// Create a simple web server app
-const webApp = new PM2App({
-  id: 'web-server',
-  entryPoint: './server.js',
-  instances: 1,
-  env: { PORT: '3000' }
-});
-
-stack.registerApp(webApp);
-await stack.start();</code></pre>
-            </div>
-          </div>
-          <div id="cluster" class="tab-pane">
-            <div class="code-block">
-              <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
-
-const stack = new PM2Stack({ verbose: true });
-
-// Create a cluster of web servers
-const webApp = new PM2App({
-  id: 'web-server',
-  entryPoint: './server.js',
-  instances: 4, // 4 instances in cluster mode
-  env: { PORT: '3000' }
-});
-
-stack.registerApp(webApp);
-await stack.start();</code></pre>
-            </div>
-          </div>
-          <div id="env" class="tab-pane">
-            <div class="code-block">
-              <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
-
-const stack = new PM2Stack({ verbose: true });
-
-// App with environment variables
-const apiApp = new PM2App({
-  id: 'api-server',
-  entryPoint: './api.js',
-  instances: 2,
-  env: {
-    NODE_ENV: 'production',
-    PORT: '3001',
-    API_KEY: 'your-secret-key',
-    DATABASE_URL: 'postgres://localhost:5432/mydb'
-  }
-});
-
-stack.registerApp(apiApp);
-await stack.start();</code></pre>
-            </div>
-          </div>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+          <p style="font-size: 18px; color: #6b7280; margin-bottom: 40px; line-height: 1.6;">
+            Practical code examples and use cases to help you get started quickly.
+          </p>
+          <a href="examples.html" class="btn btn-primary"
+            style="display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; background: #2563eb; color: white; transition: all 0.3s ease;">View
+            Examples</a>
         </div>
       </div>
     </section>
@@ -351,7 +248,7 @@ await stack.start();</code></pre>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 PM2Stack. All rights reserved.</p>
+        <p>&copy; <span id="current-year">2024</span> PM2Stack. All rights reserved.</p>
       </div>
     </div>
   </footer>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples - PM2Stack</title>
+  <meta name="description"
+    content="Practical examples and code samples for PM2Stack - TypeScript library for PM2 process management">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <h1><a href="index.html" style="text-decoration: none; color: inherit;">PM2Stack</a></h1>
+        <span class="version">v1.0.0</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#features" class="nav-link">Features</a></li>
+        <li><a href="index.html#installation" class="nav-link">Installation</a></li>
+        <li><a href="index.html#quick-start" class="nav-link">Quick Start</a></li>
+        <li><a href="api.html" class="nav-link">API</a></li>
+        <li><a href="examples.html" class="nav-link active">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero"
+      style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 120px 0 80px; margin-top: 70px;">
+      <div class="container">
+        <div class="hero-content" style="text-align: center;">
+          <h1 class="hero-title" style="font-size: 48px; font-weight: 700; margin-bottom: 20px;">Examples</h1>
+          <p class="hero-subtitle" style="font-size: 24px; font-weight: 500; margin-bottom: 20px; opacity: 0.9;">
+            Practical code examples and use cases</p>
+          <p class="hero-description"
+            style="font-size: 18px; margin-bottom: 40px; opacity: 0.8; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Learn how to use PM2Stack with real-world examples and code samples.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="examples" style="padding: 80px 0; background: #f8fafc;">
+      <div class="container">
+        <h2 class="section-title">Code Examples</h2>
+
+        <div class="example-tabs">
+          <button class="tab-btn active" data-tab="basic">Basic Usage</button>
+          <button class="tab-btn" data-tab="cluster">Cluster Mode</button>
+          <button class="tab-btn" data-tab="env">Environment Variables</button>
+          <button class="tab-btn" data-tab="multiple">Multiple Apps</button>
+          <button class="tab-btn" data-tab="error-handling">Error Handling</button>
+        </div>
+
+        <div class="tab-content">
+          <div id="basic" class="tab-pane active">
+            <div class="example-section">
+              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #1f2937;">Basic Usage</h3>
+              <p style="color: #6b7280; margin-bottom: 30px; line-height: 1.6;">
+                A simple example showing how to create a PM2Stack instance and register a single application.
+              </p>
+              <div class="code-block">
+                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+// Create a PM2Stack instance
+const stack = new PM2Stack({ 
+  verbose: true,
+  exitOnStart: false 
+});
+
+// Create a simple web server app
+const webApp = new PM2App({
+  id: 'web-server',
+  entryPoint: './server.js',
+  instances: 1,
+  env: { 
+    PORT: '3000',
+    NODE_ENV: 'production'
+  }
+});
+
+// Register and start the app
+stack.registerApp(webApp);
+await stack.start();
+
+console.log('✅ Web server started on port 3000');</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div id="cluster" class="tab-pane">
+            <div class="example-section">
+              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #1f2937;">Cluster Mode</h3>
+              <p style="color: #6b7280; margin-bottom: 30px; line-height: 1.6;">
+                Run multiple instances of your application in cluster mode for better performance and load distribution.
+              </p>
+              <div class="code-block">
+                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ verbose: true });
+
+// Create a cluster of web servers
+const webApp = new PM2App({
+  id: 'web-server',
+  entryPoint: './server.js',
+  instances: 4, // 4 instances in cluster mode
+  env: { 
+    PORT: '3000',
+    NODE_ENV: 'production'
+  }
+});
+
+stack.registerApp(webApp);
+await stack.start();
+
+console.log('✅ 4 web server instances started in cluster mode');</code></pre>
+              </div>
+              <div class="example-note">
+                <h4 style="color: #1f2937; margin-bottom: 10px;">💡 Note</h4>
+                <p style="color: #6b7280; margin: 0;">
+                  When <code>instances > 1</code>, PM2 automatically uses cluster mode.
+                  Each instance will run on a separate CPU core for optimal performance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="env" class="tab-pane">
+            <div class="example-section">
+              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #1f2937;">Environment Variables
+              </h3>
+              <p style="color: #6b7280; margin-bottom: 30px; line-height: 1.6;">
+                Pass environment variables to your applications for configuration and secrets management.
+              </p>
+              <div class="code-block">
+                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ verbose: true });
+
+// API server with environment variables
+const apiApp = new PM2App({
+  id: 'api-server',
+  entryPoint: './api.js',
+  instances: 2,
+  env: {
+    NODE_ENV: 'production',
+    PORT: '3001',
+    API_KEY: 'your-secret-key-here',
+    DATABASE_URL: 'postgres://localhost:5432/mydb',
+    REDIS_URL: 'redis://localhost:6379',
+    JWT_SECRET: 'your-jwt-secret',
+    LOG_LEVEL: 'info'
+  }
+});
+
+stack.registerApp(apiApp);
+await stack.start();
+
+console.log('✅ API server started with environment variables');</code></pre>
+              </div>
+              <div class="example-note">
+                <h4 style="color: #1f2937; margin-bottom: 10px;">🔒 Security Tip</h4>
+                <p style="color: #6b7280; margin: 0;">
+                  For production, use environment variable files or secret management systems
+                  instead of hardcoding sensitive values.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="multiple" class="tab-pane">
+            <div class="example-section">
+              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #1f2937;">Multiple Applications
+              </h3>
+              <p style="color: #6b7280; margin-bottom: 30px; line-height: 1.6;">
+                Manage multiple applications with different configurations in a single PM2Stack instance.
+              </p>
+              <div class="code-block">
+                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ 
+  verbose: true,
+  exitOnStart: false 
+});
+
+// Web server (cluster mode)
+const webApp = new PM2App({
+  id: 'web-server',
+  entryPoint: './web-server.js',
+  instances: 3,
+  env: { 
+    PORT: '3000',
+    NODE_ENV: 'production'
+  }
+});
+
+// API server (single instance)
+const apiApp = new PM2App({
+  id: 'api-server',
+  entryPoint: './api-server.js',
+  instances: 1,
+  env: { 
+    PORT: '3001',
+    NODE_ENV: 'production',
+    API_KEY: 'secret-key'
+  }
+});
+
+// Worker service (background processing)
+const workerApp = new PM2App({
+  id: 'worker-service',
+  entryPoint: './worker.js',
+  instances: 2,
+  env: { 
+    NODE_ENV: 'production',
+    QUEUE_URL: 'redis://localhost:6379'
+  }
+});
+
+// Register all apps
+stack.registerApp(webApp);
+stack.registerApp(apiApp);
+stack.registerApp(workerApp);
+
+// Start everything
+await stack.start();
+
+console.log('✅ All applications started successfully');</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div id="error-handling" class="tab-pane">
+            <div class="example-section">
+              <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #1f2937;">Error Handling</h3>
+              <p style="color: #6b7280; margin-bottom: 30px; line-height: 1.6;">
+                Implement proper error handling for production applications.
+              </p>
+              <div class="code-block">
+                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+async function startApplication() {
+  const stack = new PM2Stack({ 
+    verbose: true,
+    exitOnStart: false 
+  });
+
+  try {
+    // Create and register apps
+    const webApp = new PM2App({
+      id: 'web-server',
+      entryPoint: './server.js',
+      instances: 2,
+      env: { PORT: '3000' }
+    });
+
+    stack.registerApp(webApp);
+
+    // Start the stack
+    await stack.start();
+    console.log('✅ Application started successfully');
+
+    // Handle graceful shutdown
+    process.on('SIGINT', async () => {
+      console.log('🛑 Shutting down gracefully...');
+      await stack.stop();
+    });
+
+    process.on('SIGTERM', async () => {
+      console.log('🛑 Shutting down gracefully...');
+      await stack.stop();
+    });
+
+  } catch (error) {
+    console.error('❌ Failed to start application:', error.message);
+    process.exit(1);
+  }
+}
+
+// Start the application
+startApplication();</code></pre>
+              </div>
+              <div class="example-note">
+                <h4 style="color: #1f2937; margin-bottom: 10px;">⚠️ Important</h4>
+                <p style="color: #6b7280; margin: 0;">
+                  Always implement graceful shutdown handlers to ensure your applications
+                  stop cleanly when receiving termination signals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-section"
+          style="margin-top: 60px; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+          <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #1f2937;">Running the Examples</h3>
+          <p style="color: #6b7280; margin-bottom: 20px; line-height: 1.6;">
+            To run the examples in this project:
+          </p>
+          <div class="code-block">
+            <pre><code># Install dependencies
+npm install
+
+# Build the library
+npm run build
+
+# Run the basic example
+node examples/basic-example.js
+
+# Or run the TypeScript example
+npx ts-node examples/basic-example.ts</code></pre>
+          </div>
+          <p style="color: #6b7280; margin-top: 20px; line-height: 1.6;">
+            Check the <code>examples/</code> directory for more complete examples with sample applications.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>PM2Stack</h3>
+          <p>A powerful TypeScript library for PM2 process management.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/yourusername/pm2-stack">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/pm2-stack">npm</a></li>
+            <li><a href="https://pm2.keymetrics.io/">PM2 Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>License</h4>
+          <p>MIT License</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2024</span> PM2Stack. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

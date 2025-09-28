@@ -1,23 +1,55 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function () {
+  // Set current year in footer
+  const currentYearElement = document.getElementById('current-year');
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
+
   // Handle navigation clicks
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
+      const href = this.getAttribute('href');
+      
+      // If it's an external link (starts with http) or a different page, let it navigate normally
+      if (href.startsWith('http') || href.includes('.html') || href.includes('#')) {
+        // For hash links on the same page, handle smooth scrolling
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetSection = document.getElementById(targetId);
 
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
+          if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
 
-        // Update active nav link
-        navLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
+            // Update active nav link
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+          }
+        }
+        // For other links, let them navigate normally (don't prevent default)
+      } else {
+        // For internal anchor links, handle smooth scrolling
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+
+          // Update active nav link
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        }
       }
     });
   });

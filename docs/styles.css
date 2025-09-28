@@ -497,6 +497,88 @@ section {
   color: #9ca3af;
 }
 
+/* Example notes and additional styles */
+.example-note {
+  background: #f0f9ff;
+  border: 1px solid #0ea5e9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.example-note h4 {
+  margin: 0 0 10px 0;
+  color: #0c4a6e;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.example-note p {
+  margin: 0;
+  color: #0c4a6e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.example-note code {
+  background: #e0f2fe;
+  color: #0c4a6e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+}
+
+.type-definition {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #2563eb;
+}
+
+.method-params,
+.method-returns {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border-left: 3px solid #2563eb;
+}
+
+.method-params h5,
+.method-returns h5 {
+  margin: 0 0 10px 0;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.method-params ul,
+.method-returns ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.method-params li,
+.method-returns li {
+  padding: 5px 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.method-params code,
+.method-returns code {
+  background: #e5e7eb;
+  color: #374151;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {

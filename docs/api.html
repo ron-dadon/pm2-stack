@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference - PM2Stack</title>
+  <meta name="description"
+    content="Complete API reference for PM2Stack - TypeScript library for PM2 process management">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <h1><a href="index.html" style="text-decoration: none; color: inherit;">PM2Stack</a></h1>
+        <span class="version">v1.0.0</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#features" class="nav-link">Features</a></li>
+        <li><a href="index.html#installation" class="nav-link">Installation</a></li>
+        <li><a href="index.html#quick-start" class="nav-link">Quick Start</a></li>
+        <li><a href="api.html" class="nav-link active">API</a></li>
+        <li><a href="examples.html" class="nav-link">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero"
+      style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 120px 0 80px; margin-top: 70px;">
+      <div class="container">
+        <div class="hero-content" style="text-align: center;">
+          <h1 class="hero-title" style="font-size: 48px; font-weight: 700; margin-bottom: 20px;">API Reference</h1>
+          <p class="hero-subtitle" style="font-size: 24px; font-weight: 500; margin-bottom: 20px; opacity: 0.9;">
+            Complete documentation for PM2Stack classes and methods</p>
+          <p class="hero-description"
+            style="font-size: 18px; margin-bottom: 40px; opacity: 0.8; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Detailed API documentation for all PM2Stack classes, methods, and configuration options.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="api" style="padding: 80px 0;">
+      <div class="container">
+        <div class="api-section">
+          <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px; color: #1f2937;">PM2Stack</h2>
+          <p style="font-size: 18px; color: #6b7280; margin-bottom: 40px; line-height: 1.6;">
+            The main class for managing PM2 processes. Create an instance to register and manage multiple applications.
+          </p>
+
+          <div class="api-class">
+            <h3
+              style="font-size: 24px; font-weight: 600; margin: 30px 0 15px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              Constructor</h3>
+            <div class="code-block">
+              <pre><code>new PM2Stack(options?: PM2StackOptions)</code></pre>
+            </div>
+            <div class="api-params">
+              <h4 style="font-size: 18px; font-weight: 600; margin: 20px 0 10px; color: #374151;">Options</h4>
+              <ul style="list-style: none; padding-left: 0;">
+                <li
+                  style="padding: 8px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">verbose?: boolean</code> -
+                  Enable verbose logging (default: false)
+                </li>
+                <li
+                  style="padding: 8px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">exitOnStart?: boolean</code>
+                  - Exit process after starting (default: true)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="api-methods">
+            <h3
+              style="font-size: 24px; font-weight: 600; margin: 30px 0 15px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              Methods</h3>
+
+            <div class="method">
+              <h4
+                style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1f2937; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;">
+                <code>registerApp(app: PM2App): void</code>
+              </h4>
+              <p style="color: #6b7280; line-height: 1.6; margin-bottom: 15px;">
+                Register a PM2App with the stack. Must be called before starting the stack.
+              </p>
+              <div class="method-params">
+                <h5 style="font-size: 16px; font-weight: 600; margin: 15px 0 8px; color: #374151;">Parameters</h5>
+                <ul style="list-style: none; padding-left: 0;">
+                  <li
+                    style="padding: 5px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                    <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">app</code> - The PM2App
+                    instance to register
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="method">
+              <h4
+                style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1f2937; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;">
+                <code>start(): Promise&lt;void&gt;</code>
+              </h4>
+              <p style="color: #6b7280; line-height: 1.6; margin-bottom: 15px;">
+                Start all registered applications using PM2. This method will:
+              </p>
+              <ul style="color: #6b7280; line-height: 1.6; margin-left: 20px;">
+                <li>Connect to PM2 daemon</li>
+                <li>Start all registered applications</li>
+                <li>Remove any running apps not in the current stack</li>
+                <li>Optionally exit the process if exitOnStart is true</li>
+              </ul>
+            </div>
+
+            <div class="method">
+              <h4
+                style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1f2937; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;">
+                <code>stop(): Promise&lt;void&gt;</code>
+              </h4>
+              <p style="color: #6b7280; line-height: 1.6; margin-bottom: 15px;">
+                Stop all registered applications and disconnect from PM2. This method will:
+              </p>
+              <ul style="color: #6b7280; line-height: 1.6; margin-left: 20px;">
+                <li>Stop all registered applications</li>
+                <li>Disconnect from PM2 daemon</li>
+                <li>Exit the process</li>
+              </ul>
+            </div>
+
+            <div class="method">
+              <h4
+                style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1f2937; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;">
+                <code>isStarted(): boolean</code>
+              </h4>
+              <p style="color: #6b7280; line-height: 1.6; margin-bottom: 15px;">
+                Check if the stack has been started.
+              </p>
+              <div class="method-returns">
+                <h5 style="font-size: 16px; font-weight: 600; margin: 15px 0 8px; color: #374151;">Returns</h5>
+                <p style="color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">boolean</code> - True if the
+                  stack has been started, false otherwise
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="api-section" style="margin-top: 60px;">
+          <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px; color: #1f2937;">PM2App</h2>
+          <p style="font-size: 18px; color: #6b7280; margin-bottom: 40px; line-height: 1.6;">
+            Represents a single application to be managed by PM2. Each app has its own configuration including entry
+            point, instances, and environment variables.
+          </p>
+
+          <div class="api-class">
+            <h3
+              style="font-size: 24px; font-weight: 600; margin: 30px 0 15px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              Constructor</h3>
+            <div class="code-block">
+              <pre><code>new PM2App(config: PM2AppConfig)</code></pre>
+            </div>
+            <div class="api-params">
+              <h4 style="font-size: 18px; font-weight: 600; margin: 20px 0 10px; color: #374151;">Configuration</h4>
+              <ul style="list-style: none; padding-left: 0;">
+                <li
+                  style="padding: 8px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">id: string</code> - Unique
+                  identifier for the app
+                </li>
+                <li
+                  style="padding: 8px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">entryPoint: string</code> -
+                  Path to the application entry point
+                </li>
+                <li
+                  style="padding: 8px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">instances?: number</code> -
+                  Number of instances (default: 1)
+                </li>
+                <li
+                  style="padding: 8px 0; color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">env?: object</code> -
+                  Environment variables
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="api-methods">
+            <h3
+              style="font-size: 24px; font-weight: 600; margin: 30px 0 15px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              Methods</h3>
+
+            <div class="method">
+              <h4
+                style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1f2937; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;">
+                <code>getConfig(): PM2AppConfig</code>
+              </h4>
+              <p style="color: #6b7280; line-height: 1.6; margin-bottom: 15px;">
+                Get the current configuration of the app.
+              </p>
+              <div class="method-returns">
+                <h5 style="font-size: 16px; font-weight: 600; margin: 15px 0 8px; color: #374151;">Returns</h5>
+                <p style="color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">PM2AppConfig</code> - The app
+                  configuration object
+                </p>
+              </div>
+            </div>
+
+            <div class="method">
+              <h4
+                style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1f2937; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;">
+                <code>getPM2Config(): pm2.StartOptions</code>
+              </h4>
+              <p style="color: #6b7280; line-height: 1.6; margin-bottom: 15px;">
+                Get the PM2 configuration object for starting the app. This converts the PM2App configuration to PM2's
+                expected format.
+              </p>
+              <div class="method-returns">
+                <h5 style="font-size: 16px; font-weight: 600; margin: 15px 0 8px; color: #374151;">Returns</h5>
+                <p style="color: #6b7280; font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; font-size: 14px;">
+                  <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 4px;">pm2.StartOptions</code> - PM2
+                  start options object
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="api-section" style="margin-top: 60px;">
+          <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 40px; color: #1f2937;">Types</h2>
+
+          <div class="type-definition">
+            <h3
+              style="font-size: 24px; font-weight: 600; margin: 30px 0 15px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              PM2StackOptions</h3>
+            <div class="code-block">
+              <pre><code>type PM2StackOptions = {
+  verbose?: boolean;
+  exitOnStart?: boolean;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="type-definition">
+            <h3
+              style="font-size: 24px; font-weight: 600; margin: 30px 0 15px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+              PM2AppConfig</h3>
+            <div class="code-block">
+              <pre><code>type PM2AppConfig = {
+  id: string;
+  entryPoint: string;
+  cluster?: boolean;
+  instances?: number;
+  env?: { [key: string]: string };
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>PM2Stack</h3>
+          <p>A powerful TypeScript library for PM2 process management.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/yourusername/pm2-stack">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/pm2-stack">npm</a></li>
+            <li><a href="https://pm2.keymetrics.io/">PM2 Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>License</h4>
+          <p>MIT License</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2024</span> PM2Stack. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
