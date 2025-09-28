@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - PM2Stack Documentation</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .error-code {
+      font-size: 120px;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .error-message {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 15px;
+    }
+
+    .error-description {
+      font-size: 18px;
+      color: #6b7280;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #2563eb;
+      border-color: #2563eb;
+    }
+
+    .btn-secondary:hover {
+      background: #2563eb;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <h1>PM2Stack</h1>
+        <span class="version">v1.0.0</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#features" class="nav-link">Features</a></li>
+        <li><a href="index.html#installation" class="nav-link">Installation</a></li>
+        <li><a href="index.html#quick-start" class="nav-link">Quick Start</a></li>
+        <li><a href="index.html#api" class="nav-link">API</a></li>
+        <li><a href="index.html#examples" class="nav-link">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <div class="error-message">Page Not Found</div>
+      <div class="error-description">
+        The page you're looking for doesn't exist or has been moved.
+        Don't worry, let's get you back on track!
+      </div>
+      <div class="error-actions">
+        <a href="index.html" class="btn btn-primary">Go Home</a>
+        <a href="https://github.com/yourusername/pm2-stack" class="btn btn-secondary" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>PM2Stack</h3>
+          <p>A powerful TypeScript library for PM2 process management.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/yourusername/pm2-stack">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/pm2-stack">npm</a></li>
+            <li><a href="https://pm2.keymetrics.io/">PM2 Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>License</h4>
+          <p>MIT License</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 PM2Stack. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

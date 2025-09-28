@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run all checks
+        run: npm run check
+      
+      - name: Run build
+        run: npm run build
+      
+      - name: Check build output
+        run: |
+          ls -la dist/
+          echo "Build files:"
+          find dist/ -type f -name "*.js" -o -name "*.d.ts" -o -name "*.map" | sort
+      
+      - name: Verify pm2 is external
+        run: |
+          echo "Checking that pm2 is not bundled..."
+          if grep -r "pm2" dist/; then
+            echo "ERROR: pm2 found in build output - it should be external!"
+            exit 1
+          else
+            echo "✅ pm2 correctly excluded from build"
+          fi

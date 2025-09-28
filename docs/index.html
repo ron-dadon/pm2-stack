@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM2Stack - TypeScript Library for PM2 Process Management</title>
+  <meta name="description"
+    content="A powerful TypeScript library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <h1>PM2Stack</h1>
+        <span class="version">v1.0.0</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#installation" class="nav-link">Installation</a></li>
+        <li><a href="#quick-start" class="nav-link">Quick Start</a></li>
+        <li><a href="#api" class="nav-link">API</a></li>
+        <li><a href="#examples" class="nav-link">Examples</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">PM2Stack</h1>
+          <p class="hero-subtitle">A powerful TypeScript library for managing PM2 processes with ease</p>
+          <p class="hero-description">
+            Create, start, stop, and monitor multiple Node.js applications using PM2.
+            Perfect for microservices, API gateways, and complex application stacks.
+          </p>
+          <div class="hero-buttons">
+            <a href="#installation" class="btn btn-primary">Get Started</a>
+            <a href="https://github.com/yourusername/pm2-stack" class="btn btn-secondary" target="_blank">View on
+              GitHub</a>
+          </div>
+        </div>
+        <div class="hero-code">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-title">Quick Example</span>
+              <span class="code-lang">TypeScript</span>
+            </div>
+            <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ verbose: true });
+
+const webApp = new PM2App({
+  id: 'web-server',
+  entryPoint: './app.js',
+  instances: 2,
+  env: { PORT: '3000' }
+});
+
+stack.registerApp(webApp);
+await stack.start();</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Easy Process Management</h3>
+            <p>Start, stop, and restart multiple PM2 processes with simple API calls.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>TypeScript Support</h3>
+            <p>Full TypeScript support with comprehensive type definitions and IntelliSense.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Cluster Mode</h3>
+            <p>Support for both fork and cluster modes with configurable instance counts.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Environment Variables</h3>
+            <p>Pass environment variables to your applications with ease.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Error Handling</h3>
+            <p>Robust error handling with detailed error messages and stack traces.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Verbose Logging</h3>
+            <p>Optional verbose logging for debugging and monitoring your applications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="installation" class="installation">
+      <div class="container">
+        <h2 class="section-title">Installation</h2>
+        <div class="install-tabs">
+          <button class="tab-btn active" data-tab="npm">npm</button>
+          <button class="tab-btn" data-tab="yarn">yarn</button>
+          <button class="tab-btn" data-tab="pnpm">pnpm</button>
+        </div>
+        <div class="tab-content">
+          <div id="npm" class="tab-pane active">
+            <div class="code-block">
+              <pre><code>npm install pm2-stack</code></pre>
+            </div>
+          </div>
+          <div id="yarn" class="tab-pane">
+            <div class="code-block">
+              <pre><code>yarn add pm2-stack</code></pre>
+            </div>
+          </div>
+          <div id="pnpm" class="tab-pane">
+            <div class="code-block">
+              <pre><code>pnpm add pm2-stack</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="prerequisites">
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>Node.js 16.0.0 or higher</li>
+            <li>PM2 installed globally: <code>npm install -g pm2</code></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="quick-start" class="quick-start">
+      <div class="container">
+        <h2 class="section-title">Quick Start</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Import the library</h3>
+              <div class="code-block">
+                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Create a PM2Stack instance</h3>
+              <div class="code-block">
+                <pre><code>const stack = new PM2Stack({
+  verbose: true,
+  exitOnStart: false
+});</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Create and register apps</h3>
+              <div class="code-block">
+                <pre><code>const app = new PM2App({
+  id: 'my-app',
+  entryPoint: './app.js',
+  instances: 2,
+  env: { PORT: '3000' }
+});
+
+stack.registerApp(app);</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Start the stack</h3>
+              <div class="code-block">
+                <pre><code>await stack.start();</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="api" class="api">
+      <div class="container">
+        <h2 class="section-title">API Reference</h2>
+        <div class="api-section">
+          <h3>PM2Stack</h3>
+          <div class="api-class">
+            <h4>Constructor</h4>
+            <div class="code-block">
+              <pre><code>new PM2Stack(options?: PM2StackOptions)</code></pre>
+            </div>
+            <div class="api-params">
+              <h5>Options</h5>
+              <ul>
+                <li><code>verbose?: boolean</code> - Enable verbose logging (default: false)</li>
+                <li><code>exitOnStart?: boolean</code> - Exit process after starting (default: true)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="api-methods">
+            <h4>Methods</h4>
+            <div class="method">
+              <h5><code>registerApp(app: PM2App): void</code></h5>
+              <p>Register a PM2App with the stack. Must be called before starting the stack.</p>
+            </div>
+            <div class="method">
+              <h5><code>start(): Promise&lt;void&gt;</code></h5>
+              <p>Start all registered applications using PM2.</p>
+            </div>
+            <div class="method">
+              <h5><code>stop(): Promise&lt;void&gt;</code></h5>
+              <p>Stop all registered applications and disconnect from PM2.</p>
+            </div>
+            <div class="method">
+              <h5><code>isStarted(): boolean</code></h5>
+              <p>Check if the stack has been started.</p>
+            </div>
+          </div>
+        </div>
+        <div class="api-section">
+          <h3>PM2App</h3>
+          <div class="api-class">
+            <h4>Constructor</h4>
+            <div class="code-block">
+              <pre><code>new PM2App(config: PM2AppConfig)</code></pre>
+            </div>
+            <div class="api-params">
+              <h5>Configuration</h5>
+              <ul>
+                <li><code>id: string</code> - Unique identifier for the app</li>
+                <li><code>entryPoint: string</code> - Path to the application entry point</li>
+                <li><code>instances?: number</code> - Number of instances (default: 1)</li>
+                <li><code>env?: object</code> - Environment variables</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples" class="examples">
+      <div class="container">
+        <h2 class="section-title">Examples</h2>
+        <div class="example-tabs">
+          <button class="tab-btn active" data-tab="basic">Basic Usage</button>
+          <button class="tab-btn" data-tab="cluster">Cluster Mode</button>
+          <button class="tab-btn" data-tab="env">Environment Variables</button>
+        </div>
+        <div class="tab-content">
+          <div id="basic" class="tab-pane active">
+            <div class="code-block">
+              <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ verbose: true });
+
+// Create a simple web server app
+const webApp = new PM2App({
+  id: 'web-server',
+  entryPoint: './server.js',
+  instances: 1,
+  env: { PORT: '3000' }
+});
+
+stack.registerApp(webApp);
+await stack.start();</code></pre>
+            </div>
+          </div>
+          <div id="cluster" class="tab-pane">
+            <div class="code-block">
+              <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ verbose: true });
+
+// Create a cluster of web servers
+const webApp = new PM2App({
+  id: 'web-server',
+  entryPoint: './server.js',
+  instances: 4, // 4 instances in cluster mode
+  env: { PORT: '3000' }
+});
+
+stack.registerApp(webApp);
+await stack.start();</code></pre>
+            </div>
+          </div>
+          <div id="env" class="tab-pane">
+            <div class="code-block">
+              <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+
+const stack = new PM2Stack({ verbose: true });
+
+// App with environment variables
+const apiApp = new PM2App({
+  id: 'api-server',
+  entryPoint: './api.js',
+  instances: 2,
+  env: {
+    NODE_ENV: 'production',
+    PORT: '3001',
+    API_KEY: 'your-secret-key',
+    DATABASE_URL: 'postgres://localhost:5432/mydb'
+  }
+});
+
+stack.registerApp(apiApp);
+await stack.start();</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>PM2Stack</h3>
+          <p>A powerful TypeScript library for PM2 process management.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/yourusername/pm2-stack">GitHub</a></li>
+            <li><a href="https://www.npmjs.com/package/pm2-stack">npm</a></li>
+            <li><a href="https://pm2.keymetrics.io/">PM2 Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>License</h4>
+          <p>MIT License</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 PM2Stack. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
