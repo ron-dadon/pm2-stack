@@ -1,15 +1,20 @@
 name: Deploy Documentation to GitHub Pages
 
+# Only run when documentation or related files change
 on:
   push:
     branches: [ main, master ]
     paths:
-      - 'docs/**'
-      - '.github/workflows/deploy-docs.yml'
+      - 'docs/**'                              # Documentation files
+      - 'scripts/**'                           # Version sync scripts
+      - 'package.json'                         # Version changes
+      - '.github/workflows/deploy-docs.yml'    # Workflow changes
   pull_request:
     branches: [ main, master ]
     paths:
-      - 'docs/**'
+      - 'docs/**'                              # Documentation files
+      - 'scripts/**'                           # Version sync scripts
+      - 'package.json'                         # Version changes
 
 permissions:
   contents: read
