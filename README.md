@@ -1,6 +1,6 @@
 # PM2Stack
 
-A powerful TypeScript library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.
+A powerful library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.
 
 > ⚠️ **Development Notice:** This project is currently under active development and is not production ready. Use with caution and expect breaking changes.
 
