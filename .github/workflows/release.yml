@@ -48,9 +48,11 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Who am I
-        run: npm whoami
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          npm whoami
         env:
           # NPM token for publishing (must be set in repository secrets)
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
