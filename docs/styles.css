@@ -11,9 +11,11 @@
   color: #92400e;
   padding: 12px 0;
   border-bottom: 2px solid #d97706;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  z-index: 1001;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -75,7 +77,8 @@ body {
   background: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 0;
+  top: 48px;
+  /* Position below the development banner */
   left: 0;
   right: 0;
   z-index: 1000;
@@ -147,7 +150,8 @@ body {
   background: linear-gradient(135deg, #140653 0%, #2d1b69 100%);
   color: white;
   padding: 120px 0 80px;
-  margin-top: 70px;
+  margin-top: 118px;
+  /* Banner (48px) + Navbar (70px) */
 }
 
 .hero .container {
