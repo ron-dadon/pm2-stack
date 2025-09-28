@@ -7,7 +7,7 @@ A powerful TypeScript library for managing PM2 processes with ease. Create, star
 
 ## 📚 Documentation
 
-📖 **[View Full Documentation](https://yourusername.github.io/pm2-stack)** - Complete API reference, examples, and guides
+📖 **[View Full Documentation](https://ron-dadon.github.io/pm2-stack)** - Complete API reference, examples, and guides
 
 ## 🚀 Quick Start
 
@@ -72,7 +72,7 @@ The project includes a comprehensive documentation site built with HTML, CSS, an
 
 - **Location**: `docs/` directory
 - **Deployment**: Automatically deployed to GitHub Pages
-- **URL**: https://yourusername.github.io/pm2-stack
+- **URL**: https://ron-dadon.github.io/pm2-stack
 - **Features**:
   - Responsive design for all devices
   - Interactive code examples
