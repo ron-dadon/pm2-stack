@@ -79,7 +79,7 @@
                 A simple example showing how to create a PM2Stack instance and register a single application.
               </p>
               <div class="code-block">
-                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+                <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';
 
 // Create a PM2Stack instance
 const stack = new PM2Stack({ 
@@ -114,7 +114,7 @@ console.log('✅ Web server started on port 3000');</code></pre>
                 Run multiple instances of your application in cluster mode for better performance and load distribution.
               </p>
               <div class="code-block">
-                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+                <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';
 
 const stack = new PM2Stack({ verbose: true });
 
@@ -152,7 +152,7 @@ console.log('✅ 4 web server instances started in cluster mode');</code></pre>
                 Pass environment variables to your applications for configuration and secrets management.
               </p>
               <div class="code-block">
-                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+                <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';
 
 const stack = new PM2Stack({ verbose: true });
 
@@ -195,7 +195,7 @@ console.log('✅ API server started with environment variables');</code></pre>
                 Manage multiple applications with different configurations in a single PM2Stack instance.
               </p>
               <div class="code-block">
-                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+                <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';
 
 const stack = new PM2Stack({ 
   verbose: true,
@@ -256,7 +256,7 @@ console.log('✅ All applications started successfully');</code></pre>
                 Implement proper error handling for production applications.
               </p>
               <div class="code-block">
-                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+                <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';
 
 async function startApplication() {
   const stack = new PM2Stack({ 
@@ -317,7 +317,7 @@ startApplication();</code></pre>
             To run the examples in this project:
           </p>
           <div class="code-block">
-            <pre><code># Install dependencies
+            <pre><code class="language-bash"># Install dependencies
 npm install
 
 # Build the library
