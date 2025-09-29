@@ -161,6 +161,14 @@ body {
   align-items: center;
 }
 
+/* Single column hero layout for pages without code examples */
+.hero.hero-centered .container {
+  display: block;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .hero-title {
   font-size: 48px;
   font-weight: 700;
