@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,7 +68,7 @@
               <span class="code-title">Quick Example</span>
               <span class="code-lang">TypeScript</span>
             </div>
-            <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';
+            <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';
 
 const stack = new PM2Stack({ verbose: true });
 
@@ -133,17 +135,17 @@ await stack.start();</code></pre>
         <div class="tab-content">
           <div id="npm" class="tab-pane active">
             <div class="code-block">
-              <pre><code>npm install pm2-stack</code></pre>
+              <pre><code class="language-bash">npm install pm2-stack</code></pre>
             </div>
           </div>
           <div id="yarn" class="tab-pane">
             <div class="code-block">
-              <pre><code>yarn add pm2-stack</code></pre>
+              <pre><code class="language-bash">yarn add pm2-stack</code></pre>
             </div>
           </div>
           <div id="pnpm" class="tab-pane">
             <div class="code-block">
-              <pre><code>pnpm add pm2-stack</code></pre>
+              <pre><code class="language-bash">pnpm add pm2-stack</code></pre>
             </div>
           </div>
         </div>
@@ -166,7 +168,7 @@ await stack.start();</code></pre>
             <div class="step-content">
               <h3>Import the library</h3>
               <div class="code-block">
-                <pre><code>import { PM2Stack, PM2App } from 'pm2-stack';</code></pre>
+                <pre><code class="language-typescript">import { PM2Stack, PM2App } from 'pm2-stack';</code></pre>
               </div>
             </div>
           </div>
@@ -175,7 +177,7 @@ await stack.start();</code></pre>
             <div class="step-content">
               <h3>Create a PM2Stack instance</h3>
               <div class="code-block">
-                <pre><code>const stack = new PM2Stack({
+                <pre><code class="language-typescript">const stack = new PM2Stack({
   verbose: true,
   exitOnStart: false
 });</code></pre>
@@ -187,7 +189,7 @@ await stack.start();</code></pre>
             <div class="step-content">
               <h3>Create and register apps</h3>
               <div class="code-block">
-                <pre><code>const app = new PM2App({
+                <pre><code class="language-typescript">const app = new PM2App({
   id: 'my-app',
   entryPoint: './app.js',
   instances: 2,
@@ -203,7 +205,7 @@ stack.registerApp(app);</code></pre>
             <div class="step-content">
               <h3>Start the stack</h3>
               <div class="code-block">
-                <pre><code>await stack.start();</code></pre>
+                <pre><code class="language-typescript">await stack.start();</code></pre>
               </div>
             </div>
           </div>
@@ -267,6 +269,9 @@ stack.registerApp(app);</code></pre>
   </footer>
 
   <script src="script.js"></script>
+  <!-- Prism.js for syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 
 </html>
