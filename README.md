@@ -5,6 +5,7 @@ A powerful library for managing PM2 processes with ease. Create, start, stop, an
 > ⚠️ **Development Notice:** This project is currently under active development and is not production ready. Use with caution and expect breaking changes.
 
 [![npm version](https://badge.fury.io/js/pm2-stack.svg)](https://www.npmjs.com/package/pm2-stack)
+[![CI](https://github.com/ron-dadon/pm2-stack/actions/workflows/ci.yml/badge.svg)](https://github.com/ron-dadon/pm2-stack/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 📚 Documentation
