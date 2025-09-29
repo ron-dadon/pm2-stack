@@ -6,18 +6,14 @@ on:
   push:
     branches: [master, main]
     paths:
-      - 'src/**'              # Source code changes
-      - 'examples/**'         # Example applications
-      - 'package.json'        # Dependencies
-      - 'package-lock.json'   # Lock file
-      - 'tsconfig.json'       # TypeScript config
-      - 'vite.config.ts'      # Build config
-      - '.eslintrc.js'        # Linting config
-      - '.prettierrc'         # Formatting config
-      - 'vitest.config.*'     # Test config
-      - '*.test.ts'           # Test files
-      - '*.test.js'           # Test files
-      - '.github/workflows/release.yml'           # Release workflow
+      - 'src/**'                          # Source code changes
+      - 'package.json'                    # Dependencies
+      - 'package-lock.json'               # Lock file
+      - 'tsconfig.json'                   # TypeScript config
+      - 'vite.config.ts'                  # Build config
+      - '.eslintrc.js'                    # Linting config
+      - '.prettierrc'                     # Formatting config
+      - '.github/workflows/release.yml'   # Release workflow
 
 # Prevent multiple releases from running simultaneously
 concurrency:
