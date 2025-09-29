@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PM2Stack - TypeScript Library for PM2 Process Management</title>
+  <title>PM2Stack - Library for PM2 Process Management</title>
   <meta name="description"
-    content="A powerful TypeScript library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.">
+    content="A powerful library for managing PM2 processes with ease. Create, start, stop, and monitor multiple Node.js applications using PM2.">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
     <div class="nav-container">
       <div class="nav-brand">
         <h1>PM2Stack</h1>
-        <span class="version">v0.1.0</span>
+        <span class="version" id="version">v0.1.0</span>
       </div>
       <ul class="nav-menu">
         <li><a href="#home" class="nav-link active">Home</a></li>
@@ -51,7 +51,7 @@
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">PM2Stack</h1>
-          <p class="hero-subtitle">A powerful TypeScript library for managing PM2 processes with ease</p>
+          <p class="hero-subtitle">A powerful library for managing PM2 processes with ease</p>
           <p class="hero-description">
             Create, start, stop, and monitor multiple Node.js applications using PM2.
             Perfect for microservices, API gateways, and complex application stacks.
@@ -247,7 +247,7 @@ stack.registerApp(app);</code></pre>
       <div class="footer-content">
         <div class="footer-section">
           <h3>PM2Stack</h3>
-          <p>A powerful TypeScript library for PM2 process management.</p>
+          <p>A powerful library for PM2 process management.</p>
         </div>
         <div class="footer-section">
           <h4>Links</h4>
@@ -272,6 +272,7 @@ stack.registerApp(app);</code></pre>
   <!-- Prism.js for syntax highlighting -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="version.js"></script>
 </body>
 
 </html>

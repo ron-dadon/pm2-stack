@@ -41,8 +41,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Sync version to docs
-        run: npm run docs:sync-version
 
       - name: Build library
         run: npm run build:prod
